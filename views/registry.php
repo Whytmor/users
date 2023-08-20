@@ -11,7 +11,8 @@
     password<input type="text" name="password"><br>
     phone<input type="text" name="phone"><br>
     email<input type="text" name="email"><br>
-    <button type="submit" name='registry'>Зарегистрироваться</button>
+    <input type="hidden" name="userId" value="0">
+    <button type="submit" name="registry" value="registry">Зарегистрироваться</button>
 </form>
    </body>
 </html>

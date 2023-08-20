@@ -2,24 +2,25 @@
 declare(strict_types=1);
 error_reporting(-1);
 
-$filePath = __DIR__ . "../../users/user.txt";
 
-if (isset($_POST) && !empty($_POST) ) {
-$userId = 0;
+
+
+if (isset($_POST) && !empty($_POST['registry']) ) {
+$filePath = '/user.txt';
 $userName = $_POST['user_name'];
 $password = $_POST['password'];
 $phone = $_POST['phone'];
 $email = $_POST['email'];
-
+$userId = $_POST['userId'];
 $text = "ID: {$userId}\n Имя: {$userName}\n Пароль: {$password}\n Телефон: {$phone} почта: {$email}";
 
     try {
-        if (is_writable($filePath)) {
+        if (is_writeable($filePath)) {
             if (!$handler = fopen($filePath, 'a+')) {
                 echo 'Не удалось открыть файл!';
                 exit;
             }
-            if (fwrite($handler, $text) === false ) {
+            if (fwrite($handler, $text) === FALSE) {
                 echo 'Запись в файл не произведена!';
                 exit;
             }
