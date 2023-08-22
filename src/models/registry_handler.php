@@ -2,17 +2,17 @@
 declare(strict_types=1);
 error_reporting(-1);
 
-
-
-
+//$filePath = "C:/OSPanel/domains/users/users/users.txt";
+$filePath = "../../users/users.txt";
 if (isset($_POST) && !empty($_POST['registry']) ) {
-$filePath = '/user.txt';
+
 $userName = $_POST['user_name'];
 $password = $_POST['password'];
 $phone = $_POST['phone'];
 $email = $_POST['email'];
 $userId = $_POST['userId'];
-$text = "ID: {$userId}\n Имя: {$userName}\n Пароль: {$password}\n Телефон: {$phone} почта: {$email}";
+
+$text = "ID: {$userId}\n Имя: {$userName}\n Пароль: {$password}\n Телефон: {$phone}\n почта: {$email}\n";
 
     try {
         if (is_writeable($filePath)) {
