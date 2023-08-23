@@ -1,0 +1,70 @@
+<?php
+$filePath = __DIR__ . '/text.txt';
+$usersPath = __DIR__ . '/users.txt';
+
+
+$createTXT = "Файл создан!\n";
+$text = "Тест пройден!\n";
+
+
+
+
+if (isset($_POST['submit']) && !empty($_POST['submit'])) {
+
+if(!file_exists($filePath)) {
+    if($handler = fopen($filePath, 'x')) {
+        
+        fwrite($handler, $createTXT);
+        fclose($handler);
+        echo "Файл успешно создан";
+        exit;
+    }
+
+} else {
+    if ($handler = fopen($filePath, 'a+')) {
+        fwrite($handler, $text);
+        fclose($handler);
+        echo 'Текст успешно добавлен!';
+        exit;
+    }
+}
+}
+
+if (isset($_POST) && !empty($_POST)) {
+
+$userName = $_POST['user_name'];
+$password = $_POST['password'];
+$phone = $_POST['phone'];
+$email = $_POST['email'];
+
+$usersInfo = "-------ID test123-------\n Имя пользователя: {$userName}\n Пароль: {$password}\n Телефон: {$phone}\n Email: {$email}\n -----------------\n";
+    
+if (!file_exists($usersPath)) {
+        if ($handler = fopen($usersPath, 'x'));
+            fwrite($handler, $usersInfo);
+            fclose($handler);
+            echo 'файл был создан и пользователь успешно добавлен!';
+            exit;
+    } else {
+        if ($handler = fopen($usersPath, 'a+')) {
+            fwrite($handler, $usersInfo);
+            fclose($handler);
+            echo 'Пользователь добавлен!';
+            exit;
+        }
+    }
+}
+
+?>
+<form method="post">
+<button type="submit" name="submit" value="submit">Создать файл</button>
+</form>
+<br>
+<form method="post">
+
+user name: <input type="text" name="user_name"><br>
+password: <input type="text" name="password"><br>
+phone: <input type="text" name="phone"><br>
+email: <input type="text" name="email"><br>
+<button type="submit" name="registry" value="registry">Зарегистрироваться</button>
+</form>
