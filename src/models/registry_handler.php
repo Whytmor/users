@@ -12,7 +12,13 @@ $phone = $_POST['phone'];
 $email = $_POST['email'];
 $userId = $_POST['userId'];
 
-$text = "ID: {$userId}\n Имя: {$userName}\n Пароль: {$password}\n Телефон: {$phone}\n почта: {$email}\n";
+$text = "
+ID: {$userId}\n 
+Имя: {$userName}\n 
+Пароль: {$password}\n 
+Телефон: {$phone}\n 
+Почта: {$email}\n
+";
 
     try {
         if (is_writeable($filePath)) {
